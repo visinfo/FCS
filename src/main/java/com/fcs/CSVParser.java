@@ -6,18 +6,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import com.fcs.model.Transaction;
+
 public class CSVParser implements FileParser {
 
+   private List<Transaction> inputList;
+  
 	public void parser(String filePath) {
-	    List<String> inputList = new ArrayList<String>();
+
 		try(  InputStream inputFS = new FileInputStream(filePath);BufferedReader br =
                 new BufferedReader(new InputStreamReader(inputFS)) ){
-			  inputList = br.lines().skip(1).map(mapToItem).collect(Collectors.toList());
+
+			  inputList = br.lines().skip(1).map(getTransaction).collect(Collectors.toList());
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -25,13 +29,18 @@ public class CSVParser implements FileParser {
 		}
 
 	}
-	private Function<String, String> mapToItem = (line) -> {
+	
+	public List<Transaction> getInputList() {
+		return inputList;
+	}
+
+	private Function<String, Transaction> getTransaction = (line) -> {
 
 		  String[] p = line.split(",");// a CSV has comma separated lines
 
-		 // YourJavaItem item = new YourJavaItem();
+		  Transaction item = new Transaction();
 
-		 // item.setItemNumber(p[0]);//<-- this is the first column in the csv file
+		  item.setReferenceId(p[0]);//<-- this is the first column in the csv file
 
 		  if (p[3] != null && p[3].trim().length() > 0) {
 
@@ -41,7 +50,7 @@ public class CSVParser implements FileParser {
 
 		  //more initialization goes here
 
-		  return "";
+		  return item;
 
 		};
 
