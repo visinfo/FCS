@@ -9,7 +9,9 @@ public class FileReader {
 	}
 	public void readFile(String filePath){
 		fileParser.parser(filePath);
+	
 	}
+	
 	
 	
 	

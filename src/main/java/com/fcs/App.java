@@ -1,6 +1,7 @@
 package com.fcs;
 
 import com.fcs.common.LoggerFormat;
+import com.fcs.controller.FeeCalculator;
 
 /**
  * Hello world!
@@ -17,9 +18,8 @@ public class App
     	execute();
     }
     public static void execute(){
-    	FileReader reader = new FileReader();
-    	reader.setParser(new CSVParser());
-    	reader.readFile("");
+    	FeeCalculator  cal = new FeeCalculator();
+    	cal.calculateFee("resource/sampleData.txt");
     	
     }
 }
