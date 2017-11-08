@@ -17,7 +17,9 @@ public class App
     	execute();
     }
     public static void execute(){
-    	
+    	FileReader reader = new FileReader();
+    	reader.setParser(new CSVParser());
+    	reader.readFile("");
     	
     }
 }
