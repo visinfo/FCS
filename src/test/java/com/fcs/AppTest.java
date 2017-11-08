@@ -1,6 +1,7 @@
 package com.fcs;
 
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -10,9 +11,9 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 @RunWith(PowerMockRunner.class)
 public class AppTest {
-	
+	@Test
     public void execute_checkIfReturnSuccess(){
     	
-    	Assert.assertEquals(true, true);
+    	Assert.assertEquals(true,true);
     }
 }

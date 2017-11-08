@@ -18,8 +18,13 @@ public class App
     	execute();
     }
     public static void execute(){
-    	FeeCalculator  cal = new FeeCalculator();
-    	cal.calculateFee("resource/sampleData.txt");
+    	try {
+    		FeeCalculator  cal = new FeeCalculator();
+        	cal.calculateFee("resource/sampleData.txt");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
     	
     }
 }
